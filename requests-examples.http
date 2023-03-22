@@ -1,0 +1,113 @@
+@baseUrl = http://127.0.0.1:8080
+
+# Создание пользователей 1, 2
+POST {{baseUrl}}/users
+Content-Type: application/json
+
+{
+  "email": "email1@aiohttp.com",
+  "password": "0123456789"
+}
+
+###
+
+# Создание пользователя c уже существующей почтой
+POST {{baseUrl}}/users
+Content-Type: application/json
+
+{
+  "email": "email1@aiohttp.com",
+  "password": "1231213555"
+}
+
+###
+
+# Получение пользователя 1, 2 
+GET {{baseUrl}}/users/1
+Content-Type: application/json
+
+###
+
+# Получение несуществующего пользователя 
+GET {{baseUrl}}/users/123
+Content-Type: application/json
+
+###
+
+# Создание объявлений 1, 2 для пользователей 1, 2
+POST {{baseUrl}}/ads
+Content-Type: application/json
+
+{
+  "title": "Tomato",
+  "description": "Nice looking tomato",
+  "owner_id": 1
+}
+
+###
+
+# Получение объявления
+GET {{baseUrl}}/ads/1
+Content-Type: application/json
+
+###
+
+# Получение несуществующего объявления
+GET {{baseUrl}}/ads/321
+Content-Type: application/json
+
+###
+
+# Обновление объявления
+PATCH {{baseUrl}}/ads/1
+Content-Type: application/json
+
+{
+  "description": "Updated description"
+}
+
+###
+
+# Получение обновлённого объявления
+GET {{baseUrl}}/ads/1
+Content-Type: application/json
+
+###
+
+# Удаление объявления
+DELETE {{baseUrl}}/ads/2
+Content-Type: application/json
+
+###
+
+# Получение удалённого объявления
+GET {{baseUrl}}/ads/2
+Content-Type: application/json
+
+###
+
+# Обновление пользователя
+PATCH {{baseUrl}}/users/1
+Content-Type: application/json
+
+{
+  "email": "newmail@aiohttp.com"
+}
+
+###
+
+# Получение обновлённого пользователя
+GET {{baseUrl}}/users/1
+Content-Type: application/json
+
+###
+
+# Удаление пользователя
+DELETE {{baseUrl}}/users/2
+Content-Type: application/json
+
+###
+
+# Получение удалённого пользователя
+GET {{baseUrl}}/users/2
+Content-Type: application/json
